@@ -1,0 +1,185 @@
+Hi Sir/Madam I am Gatkari Pooja. This is  Restaurant management system project .
+pom.xml:
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+<Restaurant>
+<src><package>
+<text>Restaurant Management System</text>
+</package></src>
+</Restaurant>
+</project>
+main.java:
+import java.io.*;
+public class Main {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Customer C=new Customer();
+		Fooditems FI=new Fooditems();
+		Bill B=new Bill();
+		C.getCno();
+		System.out.println("the customer number is:"+C.getCno());
+		C.getCname();
+		System.out.println("the customer name is:"+C.getCname());
+		C.getFeedback();
+		System.out.println("feedback:"+C.getFeedback());
+		FI.getitemId();
+		System.out.println("the itemid is:"+FI.getitemId());
+		FI.getitemName();
+		System.out.println("the item name is:"+FI.getitemName());
+		FI.getprice();
+		System.out.println("the total price of an item is:"+FI.getprice());
+		B.getCost();
+		System.out.println("the cost of the item is:"+B.getCost());
+		B.getBill();
+		System.out.println("the total bill is:"+B.getBill());
+		}
+}
+menu.java:
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+public class Menu {
+   private JFrame mainFrame;
+   private JLabel headerLabel;
+   private JLabel statusLabel;
+   private JPanel controlPanel;
+   private JLabel msglabel;
+
+   public Menu(){
+      prepareGUI();
+   }
+   public static void main(String[] args){
+   Menu  menu = new Menu();  
+     menu.showJFrameDemo();
+   }
+   private void prepareGUI(){
+      mainFrame = new JFrame("");
+      mainFrame.setSize(400,400);
+      mainFrame.setLayout(new GridLayout(3, 1));
+      
+      mainFrame.addWindowListener(new WindowAdapter() {
+         public void windowClosing(WindowEvent windowEvent){
+            System.exit(0);
+         }        
+      });    
+      headerLabel = new JLabel("", JLabel.CENTER);        
+      statusLabel = new JLabel("",JLabel.CENTER);    
+      statusLabel.setSize(350,100);
+      msglabel = new JLabel("Welcome to Restuarant.", JLabel.CENTER);
+
+      controlPanel = new JPanel();
+      controlPanel.setLayout(new FlowLayout());
+
+      mainFrame.add(headerLabel);
+      mainFrame.add(controlPanel);
+      mainFrame.add(statusLabel);
+      mainFrame.setVisible(true);  
+   }
+   private void showJFrameDemo(){
+      headerLabel.setText("Restuarnt management system");   
+      final JFrame frame = new JFrame();
+      frame.setSize(300, 300);
+      frame.setLayout(new FlowLayout());       
+      frame.add(msglabel);
+      
+      frame.addWindowListener(new WindowAdapter() {
+         public void windowClosing(WindowEvent windowEvent){
+            frame.dispose();
+            
+         }        
+      });   
+      JButton okButton = new JButton("click here");
+      okButton.addActionListener(new ActionListener() {
+         public void actionPerformed(ActionEvent e) {
+            statusLabel.setText("A Menu shown to the user.");
+            frame.setVisible(true);
+         }
+      });
+      controlPanel.add(okButton);
+      mainFrame.setVisible(true);  
+   
+      JButton okButton4 = new JButton("click here");
+      okButton4.addActionListener(new ActionListener() {
+         public void actionPerformed(ActionEvent e) {
+            statusLabel.setText("A Menu shown to the user.");
+            frame.setVisible(true);
+         }
+      });
+      controlPanel.add(okButton);
+      mainFrame.setVisible(true); 
+   }
+   
+}
+
+customer.java:
+import java.lang.*;
+public class Customer {
+	public String cname;
+	public String feedback;
+	public int cno;
+	public void cno(int cno){
+		this.cno=cno;
+	}
+	public int getCno()
+	{
+		return cno;
+	}
+	public void setFeedback(String feedback){
+		this.feedback=feedback;
+	}
+	public String getFeedback(){
+		return feedback;
+	}
+	public void setCname(String cname){
+		this.cname=cname;
+	}
+	public String getCname(){
+		return cname;
+	}
+}
+
+fooditems.java:
+public class Fooditems {
+public String itemName;
+public int itemId;
+public int price;
+public int getitemId(){
+	return itemId;
+}
+public String getitemName(){
+	return itemName;
+}
+public int getprice(){
+	return price;
+}
+}
+
+bill.java:
+public class Bill {
+	public int bill;
+	public float cost;
+	
+	public float getCost(){
+		return cost;
+	}
+	public int getBill(){
+		return bill;
+	}
+}
+manager.java:
+public class Manager {
+	void initialorder()
+	{
+		System.out.println("Display the food item for initialorder");
+	}
+ void receivecomplaint()
+ {
+	 System.out.println("It receives the complaint from the customer");
+ }
+ void receivebill()
+ {
+	 System.out.println("Manager receives the bill from customer");
+ }
+}
